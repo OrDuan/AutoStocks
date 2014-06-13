@@ -1,0 +1,11 @@
+{% extends "header.html" %}
+{% block includes %}
+
+
+{% endblock %}
+
+{% block content %}
+    {% for stock in stocks %}
+        - {{ stock.data }}
+    {% endfor %}
+{% endblock %}
