@@ -1,15 +1,7 @@
+from project.models.portfolio import get_money, set_money
+
 __author__ = 'Or Duan'
 import csv
-
-
-def get_money():
-    with open("../money.txt", "r") as fp:
-        return float(fp.read())
-
-
-def set_money(money):
-    with open("../money.txt", "w") as fp:
-        fp.write(str(money))
 
 
 def buy(stock, quantity):

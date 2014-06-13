@@ -23,7 +23,7 @@ class DataDownloader(threading.Thread):
 
             s = Stock(str(obj[0]), self.symbol)
             save(s)
-            print "saved" + str(s)
+            print "saved: " + str(s)
             sleep(3)
 
 google_theard = DataDownloader("GOOG")
