@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from project.models.portfolio import get_money, set_money
 
 __author__ = 'Or Duan'

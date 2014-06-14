@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import render_template
 from project import app
 from project.models.db_helper import save

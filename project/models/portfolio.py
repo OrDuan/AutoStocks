@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from project import db
 from project.models.db_helper import save
 
@@ -6,7 +7,7 @@ class Portfolio(db.Model):
     __tablename__ = 'portfolio'
     id = db.Column(db.Integer, primary_key=True)
     money = db.Column(db.Float)
-    stocks = db.relationship("Stock", backref=db.backref("portfolio.id"))
+    #stocks = db.relationship("Stock", backref=db.backref("portfolio.id"))
 
     def __repr__(self):
         return "< Portfolio: " + self.money + " Stocks: " + self.stocks + " >"
