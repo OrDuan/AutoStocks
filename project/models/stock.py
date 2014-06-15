@@ -9,6 +9,7 @@ class Stock(db.Model):
     __tablename__ = 'stock'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     symbol = db.Column(db.String(10))
+    portfolio = db.Column(db.Integer, ForeignKey("portfolio.id"))
     date = db.Column(db.DateTime)
     price = db.Column(db.Float)
     change = db.Column(db.Float)
