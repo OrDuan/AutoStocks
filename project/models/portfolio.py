@@ -1,23 +1,24 @@
 # -*- coding: utf-8 -*-
-from project import db
+from sqlalchemy import Column, Integer, ForeignKey
+from sqlalchemy.orm import relationship
+from project import Base
 from project.models.db_helper import save
+import user
 
 
-class Portfolio(db.Model):
+class Portfolio(Base):
+    """
+    Portfolio represent a list of stocks that bought.
+    each user can have more then one portfolio.
+    """
     __tablename__ = 'portfolio'
-    id = db.Column(db.Integer, primary_key=True)
-    money = db.Column(db.Float)
-    #stocks = db.relationship("Stock", backref=db.backref("portfolio.id"))
+    id = Column(Integer, primary_key=True)
+    user = Column(Integer, ForeignKey("user.id"))
+    stock = relationship("Stock", backref="portfolio.id")
+    quantity = Column(Integer)
+
+    def __init__(self, user):
+        self.user = user
 
     def __repr__(self):
-        return "< Portfolio: " + self.money + " Stocks: " + self.stocks + " >"
-
-
-def get_money():
-    return Portfolio.query.first().money
-
-
-def set_money(money):
-    new_money = Portfolio.query().first()
-    new_money.money = money
-    save(new_money)
+        return "< Portfolio: " + str(self.money) + " Stocks: " + str(self.stocks) + " >"

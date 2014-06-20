@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-from flask import Flask
-import flask.ext.restless
-from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+engine = create_engine('mysql://root:@localhost/autostocks')
 
-app = Flask(__name__)
-app.secret_key = 'Why would the fisherman say what the fisherman says that the fisherman says... well, i have no idea'
+Session = sessionmaker(bind=engine)
+db = Session()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/stocks_db'
-
-db = SQLAlchemy(app)
+Base = declarative_base()
 
 
 # Controllers

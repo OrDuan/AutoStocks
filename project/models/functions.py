@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from project.models.portfolio import get_money, set_money
+from project.models.user import get_money, set_money
 
 __author__ = 'Or Duan'
 import csv

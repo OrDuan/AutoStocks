@@ -3,12 +3,12 @@ from project import db
 
 
 def save(obj):
-    session = db.session
+    session = db
     session.add(obj)
     session.commit()
 
 
 def delete(obj):
-    session = db.session
+    session = db
     session.delete(obj)
     session.commit()

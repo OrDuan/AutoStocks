@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 import ast
 from datetime import datetime
-from sqlalchemy import ForeignKey
-from project import db
+from sqlalchemy import ForeignKey, Column, Integer, String, DateTime, Float
+from project import db, Base
 
 
-class Stock(db.Model):
+class Stock(Base):
     __tablename__ = 'stock'
-    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    symbol = db.Column(db.String(10))
-    portfolio = db.Column(db.Integer, ForeignKey("portfolio.id"))
-    date = db.Column(db.DateTime)
-    price = db.Column(db.Float)
-    change = db.Column(db.Float)
-    change_p = db.Column(db.Float)
-    open = db.Column(db.Float)
+    id = Column(Integer, primary_key=True)
+    symbol = Column(String(10))
+    portfolio = Column(Integer, ForeignKey("portfolio.id"))
+    date = Column(DateTime)
+    price = Column(Float)
+    change = Column(Float)
+    change_p = Column(Float)
+    open = Column(Float)
 
     def __init__(self, data):
         dict_data = ast.literal_eval(data)
